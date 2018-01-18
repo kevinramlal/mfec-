@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+//Define functions to determine exercise price of Call and Puts
+double calcCallExerciseValue(double spot, double strike){
+	int e_val;
+	e_val = max(0.00,spot - strike);
+	//cout << e_val << endl;
+	return e_val;
+}
+double calcPutExerciseValue(double spot, double strike){
+	int e_val;
+	e_val = max(0.00,strike - spot);
+	//cout << e_val << endl;
+	return e_val;
+}
+
+
+int main(){
+	// //Part 1 - ask user for spot and strike , then display call and put exercise values
+	
+	// cout << "----------Part 1: Entering a Spot and Strike-------- Press Enter to continue: "<< endl;
+	// cin.ignore(); 
+	// double spot;
+	// double strike;
+	// cout << "Please enter a Spot Price: " ;
+	// cin >> spot;
+	// //cout << spot << endl; 
+	// cout << "Please enter a Strike Price: " ;
+	// cin >> strike;
+	// //cout << strike;
+	// cout << "The exercise value of your Call is: " << calcCallExerciseValue(spot,strike) << endl;
+	// cout << "The exercise value of your Put is: " << calcPutExerciseValue(spot,strike) << endl;
+
+	// //Part 2 - For loop calculations of exercise values
+	// cin.ignore();
+	// cout << "---------Part 2: For Loop Calculations------------" << endl;
+	// cout << "i) 'Spot Loop' for Spots between 100 to 150. Press Enter to continue: "<< endl;
+	// cin.ignore(); 
+	// for (int s = 100; s <151; s++){
+	// 	cout << "For Spot Price " << s << " Your option values are: " << endl;
+	// 	cout << "Call: " << calcCallExerciseValue(s,125) << endl;
+	// 	cout << "Put: " << calcPutExerciseValue(s,125) << endl; 
+	// }
+
+	// cout << "End of 'Spot Loop' press enter to continue to 'Strike Loop'" << endl;
+	// cin.ignore();
+	// for (int st = 100; st <151; st++){
+	// 	cout << "For Strike Price " << st << " Your option values are: " << endl;
+	// 	cout << "Call: " << calcCallExerciseValue(125,st) << endl;
+	// 	cout << "Put: " << calcPutExerciseValue(125,st) << endl; 
+	// }
+	// cin.ignore();
+	
+	//Last Part
+	int in;
+	bool valid = true;
+	do
+	{	
+		cout <<"1 or 0" << endl;
+		cin >> in;
+
+		if (in == 1 || in == 0){
+			break;
+		}
+		
+		
+	}
+	while(valid);	
+
+}
+		
+// 	if (in == 0){
+// 		int st;	
+// 		cout << "Please Enter a Strike: ";
+// 		cin >> st;
+// 		cout << calcPutExerciseValue(75.00,st) << endl;
+// 	}
+// 	if (in == 1){
+// 		int sp;
+// 		cout << "Please Enter a Spot: ";
+// 		cin >> sp; 
+// 		cout << calcCallExerciseValue(sp,62.50);
+// 	}
+
+	
+// 	return 0;
+// }
