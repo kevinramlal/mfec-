@@ -1,0 +1,52 @@
+\documentclass[titlepage,11pt]{article}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amssymb}\usepackage{amsmath}
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0.in}
+\setlength{\evensidemargin}{0.in}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{3mm}
+
+\begin{document}
+\setlength{\baselineskip}{18pt}
+\setlength{\topmargin}{-0.46in}
+
+\begin{center}
+{\Large \bf Mathematical Foundations \\
+MFE Spring 2018 \\
+Assignment}
+\end{center}
+\vspace{5mm}
+
+{\bf Student name:} \hspace{60mm} {\bf Student ID:}
+
+\vspace{10mm}
+														
+{\bf Solved in team with another student (please underline):} \hspace{10mm}		{\bf Yes}	\hspace{5mm}	{\bf No}
+
+\vspace{10mm}
+
+{\bf Name of team member:} \hspace{20mm}				{\bf ID of team member:}
+
+\vspace{5mm}														
+
+Some symbols: $\mathbb R$, ${\cal D}$, $a^b_c$, $\frac{1}{x}$, $x^{-1}$, $\lim_{x\rightarrow\infty} \, f(x)$
+
+\begin{enumerate}
+\item{\it Miscellanous}:
+\begin{enumerate}
+\item {\it Does the following converge? }
+\begin{equation*} 
+s_n = \sum_{n=1}^{n} cos(\frac{\pi}{2}k\frac{k}{\sqrt{k}}(k+1000))  \hspace{10mm} n = 1,2,...                              
+\end{equation*}
+\begin{paragraph}
+{\it Answer:} 
+According the following theory $$\frac{a}{b}$$
+\end{paragraph}
+\item Subquestion 
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
