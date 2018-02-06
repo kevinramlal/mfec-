@@ -1,14 +1,70 @@
-double x0 = a;
-    double x1 = b;
-    if (f0 > 0) {
-        x0 = b;
-        x1 = a;
-    }
-    
+#include <iostream>
+#include <cstdlib>
+#include <math.h>
+using namespace std;
+
+double f(double x){
+	double poly;
+	poly = (x+10)*(x-5)*(x-10);
+	return poly;
+}
+
+double fPrime(double x){
+	double polyprime;
+	polyprime = 3*(pow(x,2)) - 10*x - 100;
+	return polyprime;
+}
+
+double findRootNewton(double x, int N){
+	double root = x;
+	for(int i=0; i<N; i++){
+		root = root - (f(root)/fPrime(root));
+		cout << "Root at this iteration is "<<root<<endl;
+	}
+	return root;
+}
+
+double findRootSecant(double x, int N){
+	const double epsi = 1e-10;  
+	double x0 = x;
+	double x1 = x + 0.25;
+    double f0 = f(x0);
+    double f1 = f(x1);
+    for(int i=0; i<N; i++){
+		double df = f1 - f0;
+		double dx = x1 - x0;
+		if(fabs(dx)>epsi){
+			double x_new = x1 - f1*(dx/df);
+			f0 = f1;
+			x0 = x1;
+			x1 = x_new;
+			f1 = f(x1);
+			cout << x1 << endl;
+		}
+		else{
+			break;
+		}
+		
+	}
+}
+
+double findRootBisection(double x, int N){
+	double a = x;
+	double x0;
+	double x1;
+	if(f(a) > 0){
+		x0 = -11;
+		x1 = a;
+	}
+	else{
+		x0 = a;
+		x1 = 11;
+	}
+	
     double f2 = 1;
     double x2 = 0;
     
-    while (!isZero(f2)) {
+    for(int i=0; i <N; i++) {
         x2 = 0.5*(x0 + x1);
         f2 = f(x2);
         if (f2 < 0) {
@@ -16,6 +72,28 @@ double x0 = a;
         } else {
             x1 = x2;
         }
+        cout << x2 << endl;
     }
     return x2;
+}
+
+
+int main(){
+	double a;
+	double b;
+	double c;
+	double d;
+	double e;
+
+	a = f(100);
+	b = fPrime(100);
+	c = findRootNewton(15,100);
+	d = findRootSecant(15,100);
+	e = findRootBisection(15,100);
+	// cout << a << endl;
+	// cout << b << endl;
+	// cout << c << endl;
+	// cout << d << endl;
+	cout << e << endl;
+
 }
