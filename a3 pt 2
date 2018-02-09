@@ -1,0 +1,43 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main(){
+	double A[10] = {12.6, 3.2, 10.0, 52, 5.2, 52, 9.9, -16.0, 111, 0.0005}; //array A from question
+	double B[10]; //initiliaze array B
+	for(int i = 0; i<10;i++){
+		B[i] = A[i]; //COPY CONTENTS FROM A INTO B
+		cout << A[i] << B[i] <<endl; 
+		cout<<" "<<endl;
+	}
+	//bubble sort
+	double temp	;
+	bool swapped;
+	do{
+		swapped = false;
+		for(int i = 1; i<10; i++){
+			
+			if(B[i-1] > B[i]){
+				temp = B[i];
+				B[i] = B[i-1];
+				B[i-1] = temp;
+				//cout << B[i]<< endl;
+				swapped = true;
+			}			
+		}
+		for(int i = 0; i<10;i++){
+		cout<<B[i]<<endl;
+		}
+	}while(swapped != false);
+
+	for(int i = 0; i<10;i++){
+		cout<<B[i]<<endl;
+	}
+	cout<<"--------------pointer---------------"<<endl;
+	double* C = B;
+	for(int i=0;i<10;i++){
+		cout<< *C << endl;
+		C++;
+	}
+	return 0; 
+}
