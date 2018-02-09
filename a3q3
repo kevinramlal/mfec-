@@ -59,7 +59,7 @@ int main(){
 	double cp;
 	double pp;
 
-	for (int i =0;i <1000000; i++){
+	for (int i =0;i <10000001; i++){
 		rsum = 0;
 		for(int r = 0; r < 4; r++){
 			z = generateGaussianNoise(0,1) ;
@@ -72,7 +72,7 @@ int main(){
 
 		
 		if((i==100) or (i==1000) or (i == 10000) or (i == 1000000)){
-			cout << S1 << " " << cp << " " << pp << endl;
+			cout << S1 << "," << cp << "," << pp << endl;
 			cout << rsum << endl;
 
 		}
