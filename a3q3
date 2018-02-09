@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cstdlib>
+#include <math.h>
+#include "mtrand.h"
+#include <cmath>
+#include <limits>
+#include "mtrand.cpp"
+
+
+using namespace std; 
+
+double generateGaussianNoise(double mu, double sigma)
+{
+	const double epsilon = 1e-10;
+	const double two_pi = 2.0*3.14159265358979323846;
+
+	static double z0, z1;
+	static bool generate;
+    static MTRand drand;
+    
+	generate = !generate;
+
+	if (!generate)
+	   return z1 * sigma + mu;
+
+	double u1, u2;
+	do
+	 {
+	   u1 = drand() ;
+	   u2 = drand() ;
+	 }
+	while ( u1 <= epsilon );
+
+	z0 = sqrt(-2.0 * log(u1)) * cos(two_pi * u2);
+	z1 = sqrt(-2.0 * log(u1)) * sin(two_pi * u2);
+	return z0 * sigma + mu;
+}
+
+
+
+int main(){
+	double z;
+	double S0 = 100;
+	double drift = 0.02;
+	double vol = 0.15;
+	double rsum = 0;
+	double r_i;
+	double S1;
+	double S1avg = 0;
+
+	for (int i =0;i <1000000; i++){
+		rsum = 0;
+		for(int r = 0; r < 4; r++){
+			z = generateGaussianNoise(0,1);
+			r_i = (drift - (1/2)*(vol*vol)) + vol*z;
+			rsum += r_i;
+			}
+		S1 = S0*exp(rsum);
+
+		
+		if((i==100) or (i==1000) or (i == 10000) or (i == 1000000)){
+			cout << S1 << endl;
+			cout << rsum << endl;
+
+		}
+
+		
+	}
+	return 0;
+}
