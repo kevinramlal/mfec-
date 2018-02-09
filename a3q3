@@ -4,10 +4,19 @@
 #include "mtrand.h"
 #include <cmath>
 #include <limits>
+#include <algorithm>
 #include "mtrand.cpp"
 
 
 using namespace std; 
+
+double callprice(double S){
+	return fmax(0,S-100);
+}
+
+double putprice(double S){
+	return fmax(0,100-S);
+}
 
 double generateGaussianNoise(double mu, double sigma)
 {
@@ -47,19 +56,23 @@ int main(){
 	double r_i;
 	double S1;
 	double S1avg = 0;
+	double cp;
+	double pp;
 
 	for (int i =0;i <1000000; i++){
 		rsum = 0;
 		for(int r = 0; r < 4; r++){
-			z = generateGaussianNoise(0,1);
+			z = generateGaussianNoise(0,1) ;
 			r_i = (drift - (1/2)*(vol*vol)) + vol*z;
 			rsum += r_i;
 			}
 		S1 = S0*exp(rsum);
+		cp = callprice(S1);
+		pp = putprice(S1);
 
 		
 		if((i==100) or (i==1000) or (i == 10000) or (i == 1000000)){
-			cout << S1 << endl;
+			cout << S1 << " " << cp << " " << pp << endl;
 			cout << rsum << endl;
 
 		}
@@ -68,3 +81,4 @@ int main(){
 	}
 	return 0;
 }
+
